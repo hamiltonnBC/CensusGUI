@@ -1,0 +1,14 @@
+flowchart LR
+    Client --> |Request|Route[routes/main.py]
+    Route --> |Fetch Data|Census[census.py]
+    Census --> |API Call|CensusAPI[Census API]
+    CensusAPI --> |Raw Data|Census
+    Census --> |Process Data|Census
+    Census --> |Formatted Data|Route
+    Route --> |Save Search|Project[project_manager.py]
+    Route --> |Response|Client
+    
+    subgraph Error Handling
+    Census --> |Error|ErrorHandler[Error Processing]
+    ErrorHandler --> |Error Response|Route
+    end

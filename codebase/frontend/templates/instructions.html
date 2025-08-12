@@ -1,0 +1,174 @@
+{% extends "components/layout/base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Instructions</h1>
+
+    <div class="space-y-6">
+        <!-- Introduction -->
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+            <div class="border-b border-gray-200 p-4">
+                <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    About CensusConnect
+                </h2>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="text-gray-600">
+                    CensusConnect currently works with ACS Profile tables. Data Profiles are an excellent starting point for novice data users, containing the most frequently requested social, economic, housing, and demographic data.
+                </p>
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="text-sm text-blue-700">
+                        Data Profiles summarize data for a single geographic area, providing both estimates and percentages, covering the most basic data on all ACS topics. ACS Data Profiles begin with the letters "DP."
+                    </p>
+                </div>
+                <a
+                        href="https://www.census.gov/programs-surveys/acs/data/data-tables.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center text-blue-600 hover:text-blue-800 gap-1"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    Learn more about Census Tables
+                </a>
+            </div>
+        </div>
+
+        <!-- Data Request Process -->
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+            <div class="border-b border-gray-200 p-4">
+                <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3v19M5 8h14M5 16h14"></path>
+                    </svg>
+                    Requesting Data
+                </h2>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="border-l-4 border-green-500 pl-4">
+                    <p class="text-gray-600">
+                        On the Request Data page, you can consult the AI assistant at any time for help. The process involves:
+                    </p>
+                    <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600">
+                        <li>Selecting variables from dropdown boxes</li>
+                        <li>Choosing desired years</li>
+                        <li>Selecting survey type</li>
+                        <li>Specifying geographic area</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="font-semibold text-gray-800">Helpful Resources:</h3>
+                    <div class="space-y-2">
+                        <a href="https://www.census.gov/programs-surveys/acs/guidance/estimates.html"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center text-blue-600 hover:text-blue-800 gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            1-year vs 5-year estimates
+                        </a>
+                        <a href="https://www.census.gov/programs-surveys/acs/library/handbooks/geography.html"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center text-blue-600 hover:text-blue-800 gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            ACS and Geography Overview
+                        </a>
+                        <a href="https://www.census.gov/programs-surveys/acs/library/handbooks/general.html"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center text-blue-600 hover:text-blue-800 gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            General ACS Data Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results View -->
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+            <div class="border-b border-gray-200 p-4">
+                <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    Working with Results
+                </h2>
+            </div>
+            <div class="p-6">
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-gray-800 mb-2">Query Details</h3>
+                        <p class="text-sm text-gray-600">
+                            View information about data inconsistencies and Jam values
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-gray-800 mb-2">Data Operations</h3>
+                        <p class="text-sm text-gray-600">
+                            Export combined data, save searches, and add additional variables/years
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-gray-800 mb-2">Data Display</h3>
+                        <p class="text-sm text-gray-600">
+                            Search records and sort data in different ways
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+            <div class="border-b border-gray-200 p-4">
+                <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Managing Projects
+                </h2>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="text-gray-600">
+                    Users can create new projects or work with existing ones. Within projects, you can:
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>View saved searches specific to the project</li>
+                    <li>Write and maintain project notes</li>
+                    <li>Communicate with an AI assistant that tracks project details</li>
+                    <li>Get help with potential data issues</li>
+                </ul>
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                    <p class="text-sm text-yellow-800">
+                        All saved searches can be accessed through the Saved Searches tab for easy reference.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

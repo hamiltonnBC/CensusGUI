@@ -1,0 +1,26 @@
+graph TD
+    Client[Client Request] --> App[app.py]
+    App --> Routes[Routes Layer]
+    Routes --> Services[Services Layer]
+    Routes --> Auth[Auth Layer]
+    Routes --> DB[Database Layer]
+    
+    subgraph Services Layer
+        Census[Census Service]
+        Email[Email Service]
+    end
+    
+    subgraph Auth Layer
+        Login[Login]
+        Register[Register]
+        Password[Password Reset]
+        Validate[Validators]
+    end
+    
+    subgraph Database Layer
+        DBManager[Database Manager]
+        UserMgr[User Manager]
+        SessionMgr[Session Manager]
+        SecurityMgr[Security Manager]
+        ProjectMgr[Project Manager]
+    end

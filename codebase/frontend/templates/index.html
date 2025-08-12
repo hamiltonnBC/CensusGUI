@@ -1,0 +1,116 @@
+{% extends "components/layout/base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+            Simplifying Access to ACS Data
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Making American Community Survey data accessible to everyone through an intuitive, intelligent interface.
+        </p>
+    </div>
+
+    <!-- Main Purpose Section -->
+    <div class="bg-white shadow-sm rounded-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Why CensusConnect?</h2>
+
+        <!-- Current ACS Access Methods -->
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Current ACS Access Methods</h3>
+            <div class="space-y-4 text-gray-600">
+                <p>The American Community Survey (ACS) provides access to valuable demographic data through two main methods:</p>
+                <div class="pl-6">
+                    <p class="mb-2"><span class="font-medium">1. Census API:</span> A programmatic interface requiring technical expertise and coding knowledge.</p>
+                    <p><span class="font-medium">2. Census Tables:</span> A web interface at <a href="https://data.census.gov/all" target="_blank" class="text-blue-600 hover:text-blue-800">data.census.gov</a> that offers point-and-click access.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- What Makes CensusConnect Different -->
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">What Makes CensusConnect Different?</h3>
+            <div class="space-y-4 text-gray-600">
+                <div class="pl-6 space-y-3">
+                    <p><span class="font-medium">Multi-Year Analysis:</span> Unlike Census Tables, CensusConnect allows you to select multiple years while automatically adjusting variable codes for accuracy.</p>
+                    <p><span class="font-medium">Simplified Interface:</span> Designed through extensive testing to be intuitive for new researchers, eliminating the learning curve associated with Census Tables.</p>
+                    <p><span class="font-medium">Smart Data Validation:</span> Automatically identifies and explains "Jam Values" (like "-999999999") that indicate missing data, preventing research errors.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problems We Solve -->
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Key Challenges Addressed</h3>
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="border rounded-lg p-4 bg-gray-50">
+                <h4 class="font-medium text-blue-600 mb-2">Variable Inconsistency</h4>
+                <p class="text-gray-600">Automatically handles changing variable names across different years, ensuring consistent data comparison.</p>
+            </div>
+            <div class="border rounded-lg p-4 bg-gray-50">
+                <h4 class="font-medium text-blue-600 mb-2">Technical Complexity</h4>
+                <p class="text-gray-600">Eliminates the need for programming knowledge by handling API calls and data processing behind the scenes.</p>
+            </div>
+            <div class="border rounded-lg p-4 bg-gray-50">
+                <h4 class="font-medium text-blue-600 mb-2">Data Quality Issues</h4>
+                <p class="text-gray-600">Identifies and explains special values and missing data, preventing research errors.</p>
+            </div>
+            <div class="border rounded-lg p-4 bg-gray-50">
+                <h4 class="font-medium text-blue-600 mb-2">Learning Curve</h4>
+                <p class="text-gray-600">Provides an intuitive interface designed for researchers of all experience levels.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-white shadow-sm rounded-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Key Features</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="flex flex-col items-start">
+                <i class="fas fa-mouse-pointer text-2xl text-blue-600 mb-3"></i>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Intuitive Selection</h3>
+                <p class="text-gray-600">Easy-to-use interface for selecting years, variables, and geographic areas.</p>
+            </div>
+            <div class="flex flex-col items-start">
+                <i class="fas fa-sync text-2xl text-blue-600 mb-3"></i>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Smart Mapping</h3>
+                <p class="text-gray-600">Automatic adjustment of variable codes across different years.</p>
+            </div>
+            <div class="flex flex-col items-start">
+                <i class="fas fa-shield-alt text-2xl text-blue-600 mb-3"></i>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Data Validation</h3>
+                <p class="text-gray-600">Automatic detection and explanation of special data values.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Getting Started Section -->
+    <div class="bg-white shadow-sm rounded-lg p-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Getting Started</h2>
+        <div class="prose max-w-none text-gray-600">
+            <p class="mb-4">
+                Create an account to access all features of CensusConnect. Once logged in, you'll have access to:
+            </p>
+            <ul class="list-disc pl-6 mb-6 space-y-2">
+                <li>Detailed instructions page with step-by-step guidance</li>
+                <li>AI-powered assistant to help walk you through the data request process</li>
+                <li>Ability to save and manage your queries</li>
+                <li>Advanced visualization tools</li>
+                <li>Personal data caching for faster access</li>
+            </ul>
+            {% if not session.user_id %}
+            <div class="flex gap-4 mt-6">
+                <a href="/register" class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors duration-200">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Create Account
+                </a>
+                <a href="/login" class="inline-flex items-center px-6 py-3 text-base font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Log In
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

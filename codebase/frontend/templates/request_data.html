@@ -1,0 +1,18 @@
+{% extends 'components/layout/base.html' %}
+
+{% block content %}
+<main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Request Census Data</h1>
+        <p class="mt-2 text-base text-gray-600">Select tables and variables to analyze ACS data</p>
+    </div>
+
+    <!-- Data Selection Form -->
+    {% include 'components/forms/data_selection_form.html' %}
+</main>
+{% endblock %}
+
+{% block scripts %}
+<!-- Any additional page-specific scripts can go here -->
+{% endblock %}

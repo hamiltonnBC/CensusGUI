@@ -1,0 +1,78 @@
+{# components/data_results/query_info.html #}
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Query Details</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Tables Section -->
+        <div>
+            <h3 class="text-sm font-medium text-gray-500">Selected Tables</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+                {% for table in table_names %}
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                    {{ table }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Years Section -->
+        <div>
+            <h3 class="text-sm font-medium text-gray-500">Selected Years</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+                {% for year in years %}
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                    {{ year }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Geography Section -->
+        <div>
+            <h3 class="text-sm font-medium text-gray-500">Geographic Area</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                    {{ geography }}
+                </span>
+            </div>
+        </div>
+
+        <!-- ACS Type Section -->
+        <div>
+            <h3 class="text-sm font-medium text-gray-500">ACS Type</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+                    {{ acs_type }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Variables Section (if available) -->
+        {% if variables %}
+        <div class="col-span-full">
+            <h3 class="text-sm font-medium text-gray-500">Selected Variables</h3>
+            <div class="mt-2 grid grid-cols-1 gap-4">
+                {% for table_id, vars in variables.items() %}
+                <div class="space-y-2">
+                    <h4 class="text-sm font-medium text-gray-700">{{ table_id }}</h4>
+                    <div class="flex flex-wrap gap-2">
+                        {% for var in vars %}
+                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+                            {{ var }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Project Info (if available) -->
+        {% if project_name %}
+        <div class="col-span-full">
+            <h3 class="text-sm font-medium text-gray-500">Project</h3>
+            <p class="mt-2 text-base text-gray-900">{{ project_name }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>

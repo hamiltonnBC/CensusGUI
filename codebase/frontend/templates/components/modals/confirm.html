@@ -1,0 +1,53 @@
+<!-- Confirmation Dialog -->
+<div id="confirmation" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 w-full max-w-2xl">
+        <div class="bg-white rounded-lg shadow-xl">
+            <!-- Header -->
+            <div class="p-6 border-b">
+                <h2 class="text-lg font-medium text-gray-900">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    Confirm Your Selection
+                </h2>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+                <div class="bg-gray-50 p-4 rounded mb-4">
+                    <p class="text-sm text-gray-600">API Request URL:</p>
+                    <p id="api_url_display" class="mt-1 text-sm font-mono bg-white p-2 rounded break-all border border-gray-200"></p>
+                </div>
+
+                <p class="text-sm text-gray-600 mb-4">
+                    Please review your selection before proceeding. This will generate a request to the Census API.
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div class="px-6 py-4 bg-gray-50 rounded-b-lg flex space-x-4">
+                <button id="confirm_yes"
+                        class="flex-1 inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200">
+                    <i class="fas fa-check mr-2"></i>
+                    Yes, Continue
+                </button>
+                <button id="confirm_no"
+                        class="flex-1 inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                    <i class="fas fa-times mr-2"></i>
+                    No, Make Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading_overlay" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+        {% include 'components/loaders/spinner.html' %}
+    </div>
+</div>
+
+<!-- Error Alert -->
+<div id="error_alert" class="hidden fixed bottom-4 right-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-lg z-50">
+    <div class="flex items-center">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <span id="error_message">An error occurred. Please try again.</span>
+    </div>
+</div>

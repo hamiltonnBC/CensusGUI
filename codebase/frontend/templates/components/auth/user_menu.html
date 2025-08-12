@@ -1,0 +1,20 @@
+{% if session.get('user_id') %}
+<div class="flex items-center space-x-4">
+    <span class="text-gray-500">Welcome, <span class="font-medium text-blue-600">{{ session.username }}</span></span>
+    <a href="/account/profile_settings" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+        <i class="fas fa-cog" title="Settings"></i>
+    </a>
+    <a href="/logout" class="text-gray-500 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+        <i class="fas fa-sign-out-alt mr-1"></i> Logout
+    </a>
+</div>
+{% else %}
+<div class="space-x-4">
+    <a href="/login" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+        <i class="fas fa-sign-in-alt mr-1"></i> Login
+    </a>
+    <a href="/register" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">
+        <i class="fas fa-user-plus mr-1"></i> Register
+    </a>
+</div>
+{% endif %}

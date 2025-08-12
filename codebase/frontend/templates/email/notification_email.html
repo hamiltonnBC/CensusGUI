@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ notification_title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f8fafc;
+            border-radius: 8px;
+        }
+        .logo {
+            color: #2563eb;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .notification-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="logo">ACS Data Explorer</div>
+</div>
+
+<div class="content">
+    <h2>{{ notification_title }}</h2>
+
+    <p>Hello {{ username }},</p>
+
+    <div class="notification-box">
+        {{ notification_message }}
+    </div>
+
+    {% if action_url %}
+    <div style="text-align: center;">
+        <a href="{{ action_url }}" class="button">{{ action_text|default('View Details') }}</a>
+    </div>
+    {% endif %}
+
+    {% if additional_info %}
+    <p>{{ additional_info }}</p>
+    {% endif %}
+</div>
+
+<div class="footer">
+    <p>You received this email because you have notifications enabled for your ACS Data Explorer account.</p>
+    <p>To update your notification preferences, visit your <a href="{{ account_settings_url }}">account settings</a>.</p>
+    <p>© {% now 'Y' %} ACS Data Explorer. All rights reserved.</p>
+</div>
+</body>
+</html>

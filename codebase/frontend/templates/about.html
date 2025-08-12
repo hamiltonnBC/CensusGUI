@@ -1,0 +1,216 @@
+{% extends "components/layout/base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Page Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">About CensusConnect</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Understanding the technical details and architecture behind our ACS data simplification platform.
+        </p>
+    </div>
+
+    <!-- Current Census Data Access Challenges -->
+    <div class="bg-white shadow-sm rounded-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Current Census Data Access Challenges</h2>
+
+        <div class="space-y-6">
+            <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">API Complexity</h3>
+                <p class="text-gray-600">The Census Bureau's API, while powerful, requires:</p>
+                <ul class="list-disc ml-6 mt-2 text-gray-600">
+                    <li>Understanding of programming concepts</li>
+                    <li>Knowledge of specific API endpoints and parameters</li>
+                    <li>Manual handling of variable code changes across years</li>
+                    <li>Complex error handling for failed requests</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Census Tables Interface Limitations</h3>
+                <p class="text-gray-600">The data.census.gov interface presents several challenges:</p>
+                <ul class="list-disc ml-6 mt-2 text-gray-600">
+                    <li>Limited to single-year data retrieval</li>
+                    <li>Complex navigation system for finding variables</li>
+                    <li>No automated handling of variable name changes</li>
+                    <li>Limited export options and data formatting</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Data Quality Issues</h3>
+                <p class="text-gray-600">Researchers often encounter:</p>
+                <ul class="list-disc ml-6 mt-2 text-gray-600">
+                    <li>Unexplained Jam Values (-999999999)</li>
+                    <li>Inconsistent variable naming across years</li>
+                    <li>Missing data without clear explanation</li>
+                    <li>Difficulty tracking variable changes over time</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Architecture -->
+    <div class="bg-white shadow-sm rounded-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Technical Architecture</h2>
+
+        <!-- Authentication System with Image -->
+        <div class="mb-8">
+            <div class="flex flex-col gap-8">
+                <!-- Top: Text content -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">User Authentication System</h3>
+                    <div class="prose max-w-none text-gray-600">
+                        <p>Our secure authentication system includes:</p>
+                        <ul class="list-disc ml-6">
+                            <li>Secure password hashing with bcrypt</li>
+                            <li>Rate limiting to prevent brute force attacks</li>
+                            <li>Session management with secure tokens</li>
+                            <li>Account recovery options</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bottom: PNG Image -->
+                <div class="w-full">
+                    <img src="{{ url_for('static', filename='images/Poster_CensusConnect_User_Authentication_System.png') }}"
+                         alt="User Authentication System Architecture"
+                         class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+        <!-- Data Processing -->
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Data Processing Engine</h3>
+            <div class="prose max-w-none text-gray-600">
+                <p>Our data processing system features:</p>
+                <ul class="list-disc ml-6">
+                    <li>Intelligent variable code mapping across years</li>
+                    <li>Automatic detection and handling of Jam Values</li>
+                    <li>Efficient data caching system</li>
+                    <li>Parallel processing for large data requests</li>
+                    <li>Automatic error recovery and request retries</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Integration -->
+    <div class="bg-white shadow-sm rounded-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">AI Assistant Integration</h2>
+        <div class="prose max-w-none text-gray-600">
+            <p>Our AI assistant helps users by:</p>
+            <ul class="list-disc ml-6">
+                <li>Providing step-by-step guidance through the data request process</li>
+                <li>Explaining variable meanings and relationships</li>
+                <li>Suggesting relevant variables based on research goals</li>
+                <li>Offering data interpretation assistance</li>
+                <li>Helping troubleshoot common issues</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="bg-white shadow-sm rounded-lg p-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Provide Feedback</h2>
+        <form id="feedbackForm" class="space-y-6">
+            <div>
+                <label for="category" class="block text-sm font-medium text-gray-700">Feedback Type</label>
+                <select id="category" name="category" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    <option value="suggestion">Suggestion</option>
+                    <option value="issue">Issue Report</option>
+                    <option value="feature">Feature Request</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="feedback" class="block text-sm font-medium text-gray-700">Your Feedback</label>
+                <textarea id="feedback" name="feedback" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+            </div>
+
+            <div>
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Submit Feedback
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- About the Author Section -->
+    <div class="bg-white shadow-sm rounded-lg p-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">About the Author</h2>
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+            <!-- Author Photo -->
+            <div class="w-48 h-48 flex-shrink-0">
+                <img src="{{ url_for('static', filename='images/author.png') }}"
+                     alt="Nicholas Trey Hamilton"
+                     class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+
+            <!-- Author Info -->
+            <div class="flex-grow">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Nicholas Trey Hamilton</h3>
+                <div class="prose max-w-none text-gray-600 mb-6">
+                    <p>Hello! My name is Nicholas. I am passionate about how data can be used to improve decision-making and drive positive change in our communities. I created CensusConnect to help researchers access and analyze American Community Survey data more easily, and to prevent common issues new researchers face.</p>
+                    </p>
+                    </p>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex gap-4">
+                    <a href="https://nicholastreyhamilton.me"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+                        <i class="fas fa-globe mr-2"></i>
+                        Personal Website
+                    </a>
+                    <a href="https://www.linkedin.com/in/nicholas-trey-hamilton/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#0A66C2] hover:bg-[#004182] transition-colors duration-200">
+                        <i class="fab fa-linkedin mr-2"></i>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feedback submission JavaScript -->
+<script>
+    document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            category: document.getElementById('category').value,
+            feedback: document.getElementById('feedback').value
+        };
+
+        try {
+            const response = await fetch('/api/feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                alert('Thank you for your feedback!');
+                document.getElementById('feedbackForm').reset();
+            } else {
+                alert('There was an error submitting your feedback. Please try again.');
+            }
+        } catch (error) {
+            alert('There was an error submitting your feedback. Please try again.');
+        }
+    });
+</script>
+{% endblock %}

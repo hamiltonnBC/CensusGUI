@@ -1,0 +1,35 @@
+classDiagram
+    BaseManager <|-- SecurityManager
+    BaseManager <|-- UserManager
+    BaseManager <|-- SessionManager
+    BaseManager <|-- ProjectManager
+    SecurityManager <-- UserManager
+    SecurityManager <-- SessionManager
+    DatabaseManager --|> UserManager
+    DatabaseManager --|> SessionManager
+    DatabaseManager --|> SecurityManager
+    DatabaseManager --|> ProjectManager
+    
+    class BaseManager{
+        +get_connection()
+        +logger
+    }
+    class SecurityManager{
+        +check_rate_limit()
+        +get_rate_limit_status()
+    }
+    class UserManager{
+        +create_user()
+        +verify_user()
+    }
+    class SessionManager{
+        +create_session()
+        +verify_session()
+    }
+    class ProjectManager{
+        +create_project()
+        +save_search()
+    }
+    class DatabaseManager{
+        +Combined functionality
+    }

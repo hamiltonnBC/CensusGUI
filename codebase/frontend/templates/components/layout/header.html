@@ -1,0 +1,107 @@
+<nav class="bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <!-- Logo and Main Navigation -->
+            <div class="flex items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/" class="flex items-center space-x-3">
+                        <i class="fas fa-chart-line text-2xl bg-gradient-to-r from-blue-600 to-blue-400"></i>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                            CensusConnect
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                {% if session.user_id %}
+                <div class="hidden md:ml-10 md:flex md:space-x-8">
+                    <a href="/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 transition-colors duration-200">
+                        <i class="fas fa-home mr-2"></i>
+                        Home
+                    </a>
+                    <a href="/instructions" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 transition-colors duration-200">
+                        <i class="fas fa-book mr-2"></i>
+                        Instructions
+                    </a>
+                    <a href="/request_data" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 transition-colors duration-200">
+                        <i class="fas fa-database mr-2"></i>
+                        Request Data
+                    </a>
+
+                    <a href="/projects" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 transition-colors duration-200">
+                        <i class="fas fa-folder mr-2"></i>
+                        Projects
+                    </a>
+                    <a href="/saved_searches" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 transition-colors duration-200">
+                        <i class="fas fa-bookmark mr-2"></i>
+                        Saved Searches
+                    </a>
+                    <a href="/about" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 transition-colors duration-200">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        About
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right side - Auth Menu (rest remains the same) -->
+            <div class="flex items-center">
+                {% if session.user_id %}
+                <!-- User Menu (Logged In) -->
+                <div class="ml-3 relative">
+                    <div class="relative" x-data="{ open: false }" @click.away="open = false">
+                        <button @click="open = !open" class="flex items-center space-x-3 bg-white p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                            <div class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center">
+                                <span class="text-white font-medium">{{ user_initials }}</span>
+                            </div>
+                            <div class="hidden md:flex md:items-center">
+                                <span class="text-sm font-medium text-gray-700">{{ username }}</span>
+                                <i class="fas fa-chevron-down ml-2 text-gray-400 text-sm"></i>
+                            </div>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div x-show="open"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             class="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                             style="display: none;">
+                            <a href="/account/profile_settings" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                <i class="fas fa-cog mr-2"></i>
+                                Settings
+                            </a>
+                            <a href="/logout" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                <i class="fas fa-sign-out-alt mr-2"></i>
+                                Sign out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <!-- Auth Buttons (Logged Out) -->
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        Log in
+                    </a>
+                    <a href="/register" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        Register
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    {% if session.user_id %}
+    <div class="md:hidden">
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+            <i class="fas fa-bars h-6 w-6"></i>
+        </button>
+    </div>
+    {% endif %}
+</nav>

@@ -1,0 +1,123 @@
+{# components/forms/data_selection_form.html #}
+<div class="form-card rounded-lg p-8">
+    <form id="dataSelectionForm" class="space-y-8">
+        <!-- AI Assistant Section -->
+        <div class="mb-8 bg-white shadow-sm rounded-lg p-6 border border-gray-200">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-medium text-gray-900">Ask AI Assistant</h3>
+                    <button id="toggleAIAssistant" class="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors duration-200">
+                        <span class="hidden" id="hideAssistantText">Hide Assistant</span>
+                        <span id="showAssistantText">Show Assistant</span>
+                    </button>
+                </div>
+
+                <div id="aiAssistantContainer" class="hidden space-y-4">
+                    <!-- Chat History -->
+                    <div id="chatHistory" class="h-64 overflow-y-auto bg-gray-50 rounded-lg p-4 space-y-3">
+                        <p class="text-gray-600 italic">Ask me about ACS data or how to use this application!</p>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="flex space-x-3">
+                        <div class="flex-grow">
+                    <textarea
+                            id="aiQuestion"
+                            rows="3"
+                            class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-base"
+                            placeholder="Ask a question about ACS data or using this application..."
+                    ></textarea>
+                        </div>
+                        <button
+                                id="submitAIQuestion"
+                                class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex-shrink-0 self-end transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled
+                        >
+                            Ask AI
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Selection and Variable Input -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- Table Selection -->
+            <div class="space-y-4">
+                <label class="block text-lg font-medium text-gray-700">Available Tables</label>
+                <div id="tableSelection" class="space-y-2">
+                    <!-- Tables will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Variable Input -->
+            <div class="space-y-4">
+                <label class="block text-lg font-medium text-gray-700">Enter Variables</label>
+                <input type="text"
+                       id="variables"
+                       class="w-full p-2 border rounded-md focus:border-blue-500 focus:ring-blue-500 h-32"
+                       placeholder="Enter comma-separated variable codes (e.g., DP02_0001E, DP03_0002E)"
+                       style="resize: vertical">
+                <p class="text-sm text-gray-600">Use variable codes from the tables listed on the left</p>
+            </div>
+        </div>
+
+        <!-- Year Selection -->
+        <div class="space-y-4">
+            <label class="block text-lg font-medium text-gray-700">Select Years</label>
+            <div id="yearSelection" class="grid grid-cols-4 gap-2">
+                <!-- Years will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Other Form Fields -->
+        <div class="grid grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">ACS Survey Type</label>
+                <select id="acs_type" name="acs_type" class="mt-1 block w-full p-2 border rounded-md">
+                    <option value="acs1">ACS 1-Year Estimates</option>
+                    <option value="acs5">ACS 5-Year Estimates</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Geographic Area</label>
+                <input type="text" id="geography" name="geography"
+                       placeholder="e.g., state:* or county:*"
+                       class="mt-1 block w-full p-2 border rounded-md">
+            </div>
+        </div>
+
+        <!-- API Key -->
+        <div class="bg-blue-50 p-4 rounded-lg">
+            <label class="block text-sm font-medium text-gray-700">Census API Key (Optional)</label>
+            <input type="text" id="api_key" name="api_key"
+                   placeholder="Enter your API key"
+                   class="mt-1 block w-full p-2 border rounded-md bg-white">
+            <p class="mt-1 text-sm text-blue-600">
+                <i class="fas fa-info-circle"></i>
+                Get your free API key from the US Census Bureau
+            </p>
+        </div>
+
+        <!-- Include Metadata -->
+        <div class="flex items-center space-x-2">
+            <input type="checkbox" id="include_metadata" name="include_metadata"
+                   class="h-4 w-4 text-blue-600 rounded">
+            <label for="include_metadata" class="text-sm text-gray-700">Include metadata</label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-end">
+            <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                Generate Data
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Include confirmation dialog component -->
+{% include 'components/modals/confirm.html' %}
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='js/data_selection.js') }}"></script>

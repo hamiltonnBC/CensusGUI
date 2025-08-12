@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant C as Client
+    participant R as Routes/auth
+    participant V as Validators
+    participant U as UserManager
+    participant S as SessionManager
+    participant E as EmailService
+    
+    C->>R: Login Request
+    R->>V: Validate Credentials
+    V-->>R: Validation Result
+    R->>U: Verify User
+    U-->>R: User Verified
+    R->>S: Create Session
+    S-->>R: Session Token
+    R-->>C: Response + Session Token
+    
+    Note over C,R: Registration Flow
+    C->>R: Register Request
+    R->>V: Validate Input
+    V-->>R: Validation Result
+    R->>U: Create User
+    U-->>R: User Created
+    R->>E: Send Verification
+    E-->>R: Email Sent
+    R-->>C: Registration Success
